@@ -18,7 +18,8 @@ const machines = [
   { id: "biceps-curl", number: "04", name: "Biceps Curl", brand: "Star Trac", status: "Disponibile", ready: true, image: "/media/new-machines/startrac-impact-biceps-curl.webp", alt: "Biceps Curl Star Trac Inspiration nella sala Revenge Gym" },
   { id: "lateral-raise", number: "05", name: "Lateral Raise", brand: "Nautilus", status: "Disponibile", ready: true, image: "/media/new-machines/nautilus-lateral-raise.webp", alt: "Lateral Raise Nautilus Nitro Plus nella sala Revenge Gym" },
   { id: "incline-chest-press", number: "06", name: "Incline Chest Press", brand: "Hoist Fitness", status: "Disponibile", ready: true, image: "/media/new-machines/hoist-incline-chest-press.webp", alt: "Incline Chest Press Hoist ROC-IT nella sala Revenge Gym" },
-  { id: "super-vertical-leg-press", number: "07", name: "Super Vertical Leg Press", brand: "Panatta", status: "In arrivo", ready: true, incoming: true, image: "/media/new-machines/panatta-super-vertical-leg-press.webp", alt: "Super Vertical Leg Press Panatta 1FW093" },
+  { id: "hip-thrust-sidea", number: "07", name: "Hip Thrust", brand: "Sidea", status: "Disponibile", ready: true, image: "/media/new-machines/sidea-hip-thrust.webp", alt: "Hip Thrust Sidea nella sala Revenge Gym" },
+  { id: "super-vertical-leg-press", number: "08", name: "Super Vertical Leg Press", brand: "Panatta", status: "In arrivo", ready: true, incoming: true, image: "/media/new-machines/panatta-super-vertical-leg-press.webp", alt: "Super Vertical Leg Press Panatta 1FW093" },
 ];
 
 const primaryMuscles = ["Quadricipite femorale", "Grande gluteo", "Bicipite femorale", "Semitendinoso", "Semimembranoso"];
@@ -42,12 +43,14 @@ const hoistPurposes = ["Sviluppare la forza nella spinta inclinata", "Allenare l
 const hoistErrors = ["Caricare dischi in modo diverso sui due lati senza intenzione", "Perdere il contatto con schienale e seduta", "Portare i gomiti in una posizione scomoda per le spalle", "Bloccare violentemente i gomiti a fine spinta", "Rimbalzare nella posizione di partenza", "Aggiungere peso prima di controllare il movimento dinamico"];
 const verticalPurposes = ["Sviluppare forza nell’estensione di anche e ginocchia", "Aumentare il volume di lavoro per quadricipiti e glutei", "Allenare le gambe lungo una traiettoria guidata", "Variare l’assetto attraverso pedana e schienale regolabili", "Gestire progressioni a dischi con finecorsa di sicurezza"];
 const verticalErrors = ["Staccare bacino o schiena dal supporto", "Scendere oltre l’escursione che si riesce a controllare", "Far collassare le ginocchia verso l’interno", "Perdere l’appoggio stabile dell’intero piede", "Rimbalzare nella parte bassa del movimento", "Bloccare violentemente le ginocchia o inseguire il carico massimo"];
+const hipThrustPurposes = ["Sviluppare forza e volume nel grande gluteo", "Allenare l’estensione dell’anca con bilanciere in sicurezza", "Ridurre i tempi di setup rispetto a panca e bilanciere improvvisati", "Progredire con dischi su una stazione dedicata", "Completare squat, presse e affondi con un lavoro mirato"];
+const hipThrustErrors = ["Inarcare eccessivamente la lombare in chiusura", "Spingere soprattutto con i quadricipiti dimenticando l’anca", "Posizionare male le scapole sul rullo", "Usare un ROM incompleto solo per caricare di più", "Lasciare scivolare i piedi sulla piattaforma", "Caricare i due lati in modo sbilanciato"];
 
 const brandTicker =
-  "ULTIMI ARRIVI · LIFE FITNESS · PANATTA · GYMLECO · STAR TRAC · NAUTILUS · HOIST · REVENGE · ";
+  "ULTIMI ARRIVI · LIFE FITNESS · PANATTA · GYMLECO · STAR TRAC · NAUTILUS · HOIST · SIDEA · REVENGE · ";
 
 const arrivalPillars = [
-  ["06", "IN SALA", "Macchine nuove già installate e utilizzabili."],
+  ["07", "IN SALA", "Macchine nuove già installate e utilizzabili."],
   ["01", "IN ARRIVO", "Super Vertical Leg Press Panatta in viaggio."],
   ["∞", "CATALOGO", "Il parco completo resta nel menu per gruppi muscolari."],
 ] as const;
@@ -238,7 +241,7 @@ export default function MachineShowcase() {
       <div className={styles.heroContent}>
         <p className={styles.eyebrow}><span></span> Ultimi arrivi · 2025–2026</p>
         <h1>PIÙ SCELTA.<br/><em>PIÙ FORZA.</em><br/>PIÙ <em>REVENGE.</em></h1>
-        <p>Non è il catalogo della palestra: è la vetrina degli ultimi arrivi. Sei macchine nuove già in sala e una Panatta Super Vertical Leg Press in arrivo.</p>
+        <p>Non è il catalogo della palestra: è la vetrina degli ultimi arrivi. Sette macchine nuove già in sala e una Panatta Super Vertical Leg Press in arrivo.</p>
         <div className={styles.heroActions}>
           <a href="#machine-rail" className={styles.primary}>Vedi gli ultimi arrivi <span>↓</span></a>
           <a
@@ -254,9 +257,9 @@ export default function MachineShowcase() {
         </div>
       </div>
       <div className={styles.heroStats}>
-        <div><strong>06</strong><span>Ultimi arrivi in sala</span></div>
+        <div><strong>07</strong><span>Ultimi arrivi in sala</span></div>
         <div><strong>01</strong><span>In arrivo</span></div>
-        <div><strong>07</strong><span>Schede tecniche</span></div>
+        <div><strong>08</strong><span>Schede tecniche</span></div>
       </div>
     </section>
 
@@ -524,6 +527,39 @@ export default function MachineShowcase() {
       </div>
     </article>
 
+    <article className={`${styles.profile} ${styles.panattaProfile} ${styles.reveal}`} id="hip-thrust-sidea">
+      <div className={styles.profileHero}>
+        <div><span>07 · DISPONIBILE IN SALA</span><small>SIDEA · MODELLO 9122</small><h2>HIP<br/><em>THRUST.</em></h2><p>Stazione dedicata alla spinta d’anca: piattaforma antiscivolo, rullo scapole e bilanciere imbottito per glutei sotto controllo.</p></div>
+        <figure className={styles.productPhoto}><SiteImage src="/media/new-machines/sidea-hip-thrust.webp" alt="Hip Thrust Sidea nella sala Revenge Gym"/><figcaption>Foto dalla sala · Revenge Gym</figcaption></figure>
+      </div>
+      {mobileDetailsButton("hip-thrust-sidea", "Hip Thrust")}
+      <div id="hip-thrust-sidea-details" className={`${styles.profileBody} ${expandedMachine === "hip-thrust-sidea" ? styles.profileBodyOpen : ""}`}>
+        <section className={styles.leadSection}><p>La Sidea Hip Thrust Platform Bench 9122 è una stazione professionale pensata per eseguire l’Hip Thrust con bilanciere senza improvvisare su panca piana. Piattaforma antiscivolo, rullo semi-cilindrico per le scapole e supporti per il bilanciere riducono i tempi di setup e aiutano a concentrarsi sull’estensione dell’anca e sulla chiusura del grande gluteo.</p><div className={styles.rating}><span>VALUTAZIONE COMPLESSIVA</span><strong>5/5</strong><i>★★★★★</i></div></section>
+
+        <div className={styles.contentGrid}>
+          <section><small>01 · MUSCOLI COINVOLTI</small><h3>SPINTA D’ANCA.<br/>GLUTEI AL CENTRO.</h3><div className={styles.dualList}><div><b>PRINCIPALI</b><p>Grande gluteo</p><p>Medio gluteo, in assistenza</p></div><div><b>IN ASSISTENZA</b><p>Ischiocrurali</p><p>Adduttori</p><p>Core e muscolatura lombare</p><p>Quadricipite, in supporto</p></div></div></section>
+          <section className={styles.darkPanel}><small>02 · A COSA SERVE</small><h3>FORZA CHE<br/>CHIUDE IN ALTO.</h3><ul>{hipThrustPurposes.map(item => <li key={item}>{item}</li>)}</ul></section>
+        </div>
+
+        <section className={styles.howItWorks}><div><small>03 · COME FUNZIONA</small><h3>APPOGGIA. CARICA.<br/><em>SPINGI.</em></h3></div><div><p>Posiziona le scapole sul rullo imbottito, i piedi sulla piattaforma e il bilanciere sull’incavo delle anche, protetto dal pad. Dai supporti laterali porta la barra in posizione, poi scendi controllando il bacino senza perdere l’appoggio della schiena.</p><p>Spingi il bacino verso l’alto fino a una chiusura solida dei glutei, con costole basse e mento neutro. In alto fai una breve pausa, poi torna giù lentamente senza far rimbalzare il bilanciere.</p></div></section>
+
+        <div className={styles.contentGrid}>
+          <section className={styles.accentPanel}><small>04 · PROGETTO SIDEA</small><h3>STAZIONE DEDICATA.<br/>SETUP RAPIDO.</h3><ul><li>Piattaforma antiscivolo per un appoggio stabile dei piedi</li><li>Rullo semi-cilindrico fisso a altezza calibrata</li><li>Supporti laterali per riposizionare il bilanciere</li><li>Pad imbottito sul bilanciere per proteggere le anche</li><li>Sei agganci per elastici, con o senza bilanciere</li><li>Maniglia e ruote per spostare la stazione</li></ul></section>
+          <section><small>05 · DATI UFFICIALI</small><h3>MODELLO<br/>9122.</h3><ul><li>Ingombro: 89 × 145 × 50 cm</li><li>Peso macchina: 50 kg</li><li>Carico massimo dichiarato: 300 kg</li><li>Altezza del rullo: circa 38–42 cm</li><li>Tipologia: stazione Hip Thrust a bilanciere</li></ul></section>
+        </div>
+
+        <section className={styles.positions}><div><small>06 · ESECUZIONE</small><h3>CHIUSURA PULITA.<br/><em>RITORNO LENTO.</em></h3></div><div className={styles.exerciseSteps}><div><b>PREPARAZIONE</b><p>Carica i due lati in modo equilibrato, sistema il pad sul bilanciere e trova un appoggio stabile di piedi e scapole prima di sbloccare la barra.</p></div><div><b>FASE DI SPINTA</b><p>Espira e spingi il bacino in alto senza inarcare la lombare. Concentrati sulla chiusura dei glutei, non sull’altezza massima del movimento.</p></div><div><b>FASE DI RITORNO</b><p>Inspira e scendi con controllo fino a una profondità gestibile. Mantieni tensione e riposiziona la barra sui supporti a fine serie.</p></div></div></section>
+
+        <div className={styles.contentGrid}>
+          <section><small>07 · STAZIONE O PANCA PIANA?</small><h3>DUE SETUP.<br/>UNA DIFFERENZA GRANDE.</h3><p>Con panca e bilanciere improvvisati serve tempo, spazio e attenzione a ogni dettaglio. La Sidea offre invece una postazione dedicata: piedi stabili, altezza del rullo calibrata e bilanciere già a portata di mano. Non rende l’esercizio “automatico”, ma rende più semplice ripetere serie di qualità.</p><ul><li>Setup più rapido e ripetibile</li><li>Meno rischio di appoggi instabili</li><li>Progressione chiara con i dischi</li><li>Ideale nei giorni glutei o dopo squat e presse</li></ul></section>
+          <section className={styles.errorPanel}><small>08 · ERRORI DA EVITARE</small><h3>CHIUDERE I GLUTEI.<br/>NON SPEZZARE LA SCHIENA.</h3><ul>{hipThrustErrors.map(item => <li key={item}>{item}</li>)}</ul></section>
+        </div>
+
+        <section className={styles.trainer}><div><small>CONSIGLI DEL TRAINER</small><h3>QUALITÀ DELLA<br/><em>CHIUSURA.</em></h3></div><blockquote>“In alto conta sentire i glutei, non quanto alzi il bacino. Partendo da carichi moderati impara il setup sulla Sidea; aumenta i dischi soltanto quando piedi, scapole e bacino restano stabili.”</blockquote></section>
+        <section className={styles.safety}><strong>FONTE E SICUREZZA</strong><p>Modello e dati costruttivi provengono dalla scheda Sidea del modello 9122. Il carico massimo dichiarato non è un obiettivo di allenamento: assetto, ROM e peso vanno adattati alla persona. In caso di dolore a anche, lombare o ginocchia, interrompi e chiedi assistenza qualificata.</p><a href="https://www.sideaita.it/attrezzatura-fitness/9122-hip-thrust-platform-bench/" target="_blank" rel="noreferrer">Scheda ufficiale Sidea <span>↗</span></a></section>
+      </div>
+    </article>
+
     <section className={`${styles.incomingBanner} ${styles.reveal}`} aria-label="Prossimo arrivo">
       <div>
         <p className={styles.eyebrow}><span></span> Prossimo arrivo</p>
@@ -544,7 +580,7 @@ export default function MachineShowcase() {
 
     <article className={`${styles.profile} ${styles.panattaProfile} ${styles.incomingProfile} ${styles.reveal}`} id="super-vertical-leg-press">
       <div className={styles.profileHero}>
-        <div><span className={styles.pulseBadge}>07 · IN ARRIVO A REVENGE GYM</span><small>PANATTA · FREEWEIGHT SPECIAL 1FW093</small><h2>SUPER VERTICAL<br/><em>LEG PRESS.</em></h2><p>La nuova protagonista dell’area gambe è in arrivo: traiettoria guidata, regolazioni evolute e caricamento a dischi.</p></div>
+        <div><span className={styles.pulseBadge}>08 · IN ARRIVO A REVENGE GYM</span><small>PANATTA · FREEWEIGHT SPECIAL 1FW093</small><h2>SUPER VERTICAL<br/><em>LEG PRESS.</em></h2><p>La nuova protagonista dell’area gambe è in arrivo: traiettoria guidata, regolazioni evolute e caricamento a dischi.</p></div>
         <figure className={styles.productPhoto}><SiteImage src="/media/new-machines/panatta-super-vertical-leg-press.webp" alt="Super Vertical Leg Press Panatta 1FW093"/><figcaption>Panatta 1FW093 · immagine del modello · macchina in arrivo</figcaption></figure>
       </div>
       {mobileDetailsButton("super-vertical-leg-press", "Super Vertical Leg Press")}
