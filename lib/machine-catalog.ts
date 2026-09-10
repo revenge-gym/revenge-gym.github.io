@@ -24,14 +24,14 @@ export type CatalogMachine = {
 };
 
 const areas: { area: MachineArea; label: string; machines: Machine[] }[] = [
-  { area: "gambe", label: "Gambe", machines: legMachines },
-  { area: "glutei", label: "Glutei", machines: gluteMachines },
+  { area: "spalle", label: "Spalle", machines: shoulderMachines },
   { area: "petto", label: "Petto", machines: chestMachines },
   { area: "dorso", label: "Dorso", machines: backMachines },
-  { area: "spalle", label: "Spalle", machines: shoulderMachines },
   { area: "bicipiti", label: "Bicipiti", machines: bicepsMachines },
   { area: "tricipiti", label: "Tricipiti", machines: tricepsMachines },
   { area: "addominali", label: "Addominali", machines: absMachines },
+  { area: "glutei", label: "Glutei", machines: gluteMachines },
+  { area: "gambe", label: "Gambe", machines: legMachines },
 ];
 
 export const machineCatalog: CatalogMachine[] = areas.flatMap(({ area, label, machines }) =>
