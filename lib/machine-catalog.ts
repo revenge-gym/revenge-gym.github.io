@@ -2,6 +2,7 @@ import { absMachines } from "./abs-machines";
 import { backMachines } from "./back-machines";
 import { bicepsMachines } from "./biceps-machines";
 import { chestMachines } from "./chest-machines";
+import { gluteMachines } from "./glute-machines";
 import { legMachines } from "./leg-machines";
 import type { Machine, MachineArea } from "./machines";
 import { shoulderMachines } from "./shoulder-machines";
@@ -24,6 +25,7 @@ export type CatalogMachine = {
 
 const areas: { area: MachineArea; label: string; machines: Machine[] }[] = [
   { area: "gambe", label: "Gambe", machines: legMachines },
+  { area: "glutei", label: "Glutei", machines: gluteMachines },
   { area: "petto", label: "Petto", machines: chestMachines },
   { area: "dorso", label: "Dorso", machines: backMachines },
   { area: "spalle", label: "Spalle", machines: shoulderMachines },

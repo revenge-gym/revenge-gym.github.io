@@ -316,7 +316,7 @@ export default function MachineShowcase() {
     </section>
 
     <section className={`${styles.index} ${styles.reveal}`} id="machine-index">
-      <div className={styles.sectionIntro}><p className={styles.eyebrow}><span></span> Ultimi arrivi · non il catalogo</p><h2>APRI LA<br/><em>SCHEDA.</em></h2><p>Scegli la macchina, leggi biomeccanica e consigli del trainer, poi provala in sala. <Link href="/macchine/gambe">Apri il catalogo per gruppi muscolari ↘</Link></p></div>
+      <div className={styles.sectionIntro}><p className={styles.eyebrow}><span></span> Ultimi arrivi · non il catalogo</p><h2>APRI LA<br/><em>SCHEDA.</em></h2><p>Scegli la macchina, leggi biomeccanica e consigli del trainer, poi provala in sala. <Link href="/macchine/glutei">Apri il catalogo glutei ↘</Link></p></div>
       <div className={styles.machineMenu}>
         {machines.map((machine) => (
           <a

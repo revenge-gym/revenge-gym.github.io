@@ -118,7 +118,7 @@ export default function MachineDetailView({
           <p>{machine.tagline}</p>
           <b>{machine.focus}</b>
           {showSheet && styles.sheetLink && hasMachineSheet(machine.id) ? (
-            <Link href={getSheetPath("gambe", machine.id)} className={styles.sheetLink}>
+            <Link href={getSheetPath(area, machine.id)} className={styles.sheetLink}>
               Scarica la scheda · {machine.name}
               <span aria-hidden="true">↗</span>
             </Link>

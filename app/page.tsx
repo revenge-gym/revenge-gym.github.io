@@ -519,6 +519,7 @@ export default function Home() {
             <div className={`nav-flyout-panel${navFlyout === "gruppi" ? " open" : ""}`} role="menu">
               <div className="nav-flyout-panel-inner">
                 <Link href="/macchine/gambe" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Gambe</Link>
+                <Link href="/macchine/glutei" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Glutei</Link>
                 <Link href="/macchine/petto" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Petto</Link>
                 <Link href="/macchine/dorso" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Dorso</Link>
                 <Link href="/macchine/spalle" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Spalle</Link>

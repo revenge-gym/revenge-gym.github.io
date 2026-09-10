@@ -18,7 +18,7 @@ export default function MachineSheetView({ machine, sheet }: Props) {
   return (
     <div className={styles.wrap}>
       <div className={styles.toolbar} aria-hidden={false}>
-        <Link href={`/macchine/gambe/${machine.id}`} className={styles.back}>
+        <Link href={`/macchine/${sheet.zone}/${machine.id}`} className={styles.back}>
           ← Torna alla scheda
         </Link>
         <div className={styles.actions}>
@@ -33,7 +33,7 @@ export default function MachineSheetView({ machine, sheet }: Props) {
           <div className={styles.brandRow}>
             <SiteImage src="/brand/revenge-gym-logo.png" alt="Revenge Gym" className={styles.logo} />
             <div className={styles.meta}>
-              <span>Gambe · {machine.number}</span>
+              <span>{sheet.zone === "glutei" ? "Glutei" : "Gambe"} · {machine.number}</span>
               <strong>{machine.brand}</strong>
             </div>
           </div>

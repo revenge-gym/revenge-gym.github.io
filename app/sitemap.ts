@@ -4,6 +4,7 @@ import { absMachines } from "@/lib/abs-machines";
 import { backMachines } from "@/lib/back-machines";
 import { bicepsMachines } from "@/lib/biceps-machines";
 import { chestMachines } from "@/lib/chest-machines";
+import { gluteMachines } from "@/lib/glute-machines";
 import { legMachines } from "@/lib/leg-machines";
 import { shoulderMachines } from "@/lib/shoulder-machines";
 import { tricepsMachines } from "@/lib/triceps-machines";
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nuove-macchine/",
     "/privacy/",
     "/macchine/gambe/",
+    "/macchine/glutei/",
     "/macchine/petto/",
     "/macchine/dorso/",
     "/macchine/spalle/",
@@ -28,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const collections = [
     ["gambe", legMachines],
+    ["glutei", gluteMachines],
     ["petto", chestMachines],
     ["dorso", backMachines],
     ["spalle", shoulderMachines],

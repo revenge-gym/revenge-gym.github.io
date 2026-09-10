@@ -1,5 +1,6 @@
 export const bodyZones = [
   { label: "Gambe", href: "/macchine/gambe" },
+  { label: "Glutei", href: "/macchine/glutei" },
   { label: "Petto", href: "/macchine/petto" },
   { label: "Dorso", href: "/macchine/dorso" },
   { label: "Spalle", href: "/macchine/spalle" },

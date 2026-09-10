@@ -1,17 +1,32 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { getGluteMachine, gluteMachines } from "@/lib/glute-machines";
 import { getLegMachine, legMachines } from "@/lib/leg-machines";
 import MachineDetailView from "@/app/components/machine-detail-view";
 import styles from "./page.module.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
+const legacyGluteSlugs = gluteMachines
+  .map((machine) => machine.id)
+  .filter((id) => id !== "hip-thrust-sidea");
+
 export function generateStaticParams() {
-  return legMachines.map((machine) => ({ slug: machine.id }));
+  return [
+    ...legMachines.map((machine) => ({ slug: machine.id })),
+    ...legacyGluteSlugs.map((slug) => ({ slug })),
+  ];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  if (getGluteMachine(slug)) {
+    return {
+      title: "Reindirizzamento | Revenge Gym",
+      robots: { index: false },
+      alternates: { canonical: `/macchine/glutei/${slug}/` },
+    };
+  }
   const machine = getLegMachine(slug);
   if (!machine) return { title: "Macchina non trovata | Revenge Gym" };
   return {
@@ -28,6 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function LegMachinePage({ params }: Props) {
   const { slug } = await params;
+  if (getGluteMachine(slug)) {
+    permanentRedirect(`/macchine/glutei/${slug}/`);
+  }
   const machine = getLegMachine(slug);
   if (!machine) notFound();
   const index = legMachines.findIndex((item) => item.id === machine.id);

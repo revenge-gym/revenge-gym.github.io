@@ -4,7 +4,7 @@ import { legMachines, legZone } from "@/lib/leg-machines";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Allenamento Gambe | 21 macchine | Revenge Gym Ladispoli",
+  title: "Allenamento Gambe | 15 macchine | Revenge Gym Ladispoli",
   description:
     "Area gambe completa a Ladispoli con attrezzature professionali: presse, hack squat, Panatta, Hammer Strength e molto altro.",
   alternates: { canonical: "/macchine/gambe/" },
@@ -25,7 +25,7 @@ export default function LegsPage() {
       styles={styles}
       athleteSrc="/photos/athletes/gambe-athlete-hero.webp"
       athleteAlt="Atleta dedicata all’allenamento delle gambe"
-      catalogIntro="Ventuno postazioni fotografate in sala per gli arti inferiori. Marchi professionali, testi tecnici corposi e un catalogo pensato per chi cerca qualità nell’allenamento."
+      catalogIntro="Quindici postazioni fotografate in sala per gli arti inferiori. Marchi professionali, testi tecnici corposi e un catalogo pensato per chi cerca qualità nell’allenamento."
       ctaEm="SPINGERE CAMBIA TUTTO."
       ctaText="Vieni a Revenge Gym e costruisci la tua progressione gambe con lo staff."
     />

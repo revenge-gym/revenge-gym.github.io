@@ -1,5 +1,7 @@
 import type { LegIllustrationType } from "@/app/components/machine-sheet/leg-sheet-illustration";
+import { gluteMachines } from "@/lib/glute-machines";
 import { legMachines } from "@/lib/leg-machines";
+import type { Machine } from "@/lib/machines";
 
 export type SheetStep = {
   number: number;
@@ -7,9 +9,11 @@ export type SheetStep = {
   detail: string;
 };
 
+export type SheetZone = "gambe" | "glutei";
+
 export type MachineSheet = {
   machineId: string;
-  zone: "gambe";
+  zone: SheetZone;
   illustration: LegIllustrationType;
   caption: string;
   steps: SheetStep[];
@@ -187,10 +191,19 @@ const CAPTION_BY_ILLUSTRATION: Record<LegIllustrationType, string> = {
   "smith-rack": "Schema squat — discesa e spinta. Confronta con la foto sopra.",
 };
 
+function findSheetMachine(machineId: string): { machine: Machine; zone: SheetZone } | null {
+  const glute = gluteMachines.find((m) => m.id === machineId);
+  if (glute) return { machine: glute, zone: "glutei" };
+  const leg = legMachines.find((m) => m.id === machineId);
+  if (leg) return { machine: leg, zone: "gambe" };
+  return null;
+}
+
 function buildSheet(machineId: string): MachineSheet | null {
-  const machine = legMachines.find((m) => m.id === machineId);
+  const found = findSheetMachine(machineId);
   const illustration = ILLUSTRATION_BY_ID[machineId];
-  if (!machine || !illustration) return null;
+  if (!found || !illustration) return null;
+  const { machine, zone } = found;
 
   const titles = STEP_TITLES[illustration];
   const cues = machine.cues.slice(0, 4);
@@ -198,7 +211,7 @@ function buildSheet(machineId: string): MachineSheet | null {
 
   return {
     machineId,
-    zone: "gambe",
+    zone,
     illustration,
     caption: CAPTION_BY_ILLUSTRATION[illustration],
     setup: SETUP_BY_ID[machineId] ?? SETUP_BY_ID["pressa-orizzontale-life-fitness"],
@@ -211,8 +224,10 @@ function buildSheet(machineId: string): MachineSheet | null {
   };
 }
 
-const sheets: MachineSheet[] = legMachines
-  .map((m) => buildSheet(m.id))
+const sheetSourceIds = [...legMachines, ...gluteMachines].map((m) => m.id);
+
+const sheets: MachineSheet[] = sheetSourceIds
+  .map((id) => buildSheet(id))
   .filter((s): s is MachineSheet => s !== null);
 
 export function getMachineSheet(machineId: string): MachineSheet | undefined {
@@ -223,8 +238,8 @@ export function hasMachineSheet(machineId: string): boolean {
   return sheets.some((sheet) => sheet.machineId === machineId);
 }
 
-export function getSheetSlugs(): string[] {
-  return sheets.map((sheet) => sheet.machineId);
+export function getSheetSlugs(zone?: SheetZone): string[] {
+  return sheets.filter((sheet) => (zone ? sheet.zone === zone : true)).map((sheet) => sheet.machineId);
 }
 
 export function getSheetPath(zone: string, machineId: string): string {

@@ -29,4 +29,4 @@ export type MachineZone = {
   manifesto: string[];
 };
 
-export type MachineArea = "gambe" | "petto" | "dorso" | "spalle" | "bicipiti" | "tricipiti" | "addominali";
+export type MachineArea = "gambe" | "glutei" | "petto" | "dorso" | "spalle" | "bicipiti" | "tricipiti" | "addominali";
