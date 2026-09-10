@@ -15,6 +15,7 @@ import { CourseAreaIcon, type CourseAreaIconKind } from "@/app/components/course
 import SocialProofReviews from "@/app/components/social-proof-reviews";
 import MachineSearch from "@/app/components/machine-search";
 import { useViewportVideo } from "@/app/hooks/use-viewport-video";
+import { bodyZones } from "@/lib/body-zones";
 
 const safariInline = { "webkit-playsinline": "true" } as const;
 
@@ -339,6 +340,11 @@ export default function Home() {
   }, [menuOpen]);
 
   useEffect(() => {
+    document.body.classList.toggle("nav-flyout-open", navFlyout !== null);
+    return () => document.body.classList.remove("nav-flyout-open");
+  }, [navFlyout]);
+
+  useEffect(() => {
     const controller = new AbortController();
     fetch(`${COUNTER_WORKER_URL}/visits`, {
       method: "POST",
@@ -518,14 +524,16 @@ export default function Home() {
             <button type="button" className="nav-flyout-trigger" aria-haspopup="true" aria-expanded={navFlyout === "gruppi"} onClick={() => setNavFlyout(navFlyout === "gruppi" ? null : "gruppi")}>Per gruppi muscolari <span>▾</span></button>
             <div className={`nav-flyout-panel${navFlyout === "gruppi" ? " open" : ""}`} role="menu">
               <div className="nav-flyout-panel-inner">
-                <Link href="/macchine/gambe" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Gambe</Link>
-                <Link href="/macchine/glutei" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Glutei</Link>
-                <Link href="/macchine/petto" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Petto</Link>
-                <Link href="/macchine/dorso" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Dorso</Link>
-                <Link href="/macchine/spalle" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Spalle</Link>
-                <Link href="/macchine/bicipiti" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Bicipiti</Link>
-                <Link href="/macchine/tricipiti" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Tricipiti</Link>
-                <Link href="/macchine/addominali" role="menuitem" onClick={() => { setMenuOpen(false); setNavFlyout(null); }}>Addominali</Link>
+                {bodyZones.map((zone) => (
+                  <Link
+                    key={zone.href}
+                    href={zone.href}
+                    role="menuitem"
+                    onClick={() => { setMenuOpen(false); setNavFlyout(null); }}
+                  >
+                    {zone.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
