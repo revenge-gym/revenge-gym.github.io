@@ -1049,7 +1049,7 @@ export default function Home() {
               <small>Orari</small>
               <dl className="hours">
                 <div><dt>Lun – Ven</dt><dd>6:30 – 22:00</dd></div>
-                <div><dt>Sabato</dt><dd>6:30 – 17:00</dd></div>
+                <div><dt>Sabato</dt><dd>6:30 – 16:30</dd></div>
                 <div className="hours-closed"><dt>Domenica</dt><dd>Chiuso</dd></div>
               </dl>
             </div>

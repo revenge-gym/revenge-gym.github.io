@@ -73,7 +73,7 @@ const jsonLd = {
   image: `${SITE_ORIGIN}/media/og-vieni-a-trovarci.jpg`,
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "06:30", closes: "22:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "06:30", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "06:30", closes: "16:30" },
   ],
 };
 
